@@ -1,0 +1,17 @@
+<h1>Categorias</h1>
+<br/>
+<table class="table">
+    <tr>
+        <th>ID</th>
+        <th>Nome</th>
+        <th>Acao</th>
+    </tr>
+     <?php foreach($this->data as $entity):?>
+    <tr>
+        <td><?php echo $entity->getId();?></td>
+        <td><?php echo $entity->getNome();?></td>
+        <td></td>
+    </tr>
+        <?php endforeach;?>
+     
+</table>
