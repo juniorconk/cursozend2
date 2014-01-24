@@ -9,7 +9,7 @@ class CategoriaTable extends AbstractTableGateway{
     public function __construct(Adapter $adapter) {
         $this->adapter = $adapter;
         $this->resultSetPrototype = new ResultSet();
-        $this->resultSetPrototype = new setArrayObjectPrototype(new CategoriaTable());
+        $this->resultSetPrototype = new setArrayObjectPrototype(new Categoria());
         $this->initialize();
          
     }

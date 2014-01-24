@@ -2,6 +2,10 @@
 namespace Livraria\Model;
 class CategoriaService{
     
+    /**
+     *
+     * @var Livraria\Model\CategoriaTable
+     */
     protected $categoriaTable;
     public function __construct(CategoriaTable $table) {
         $this->categoriaTable = $table;
@@ -12,6 +16,3 @@ class CategoriaService{
         return $resultset;
     }
 }
-$adapter = new \Zend\Db\Adapter\Adapter();
-$categoriaService = new CategoriaService($categoriaTable);
-$categoriaTable = new CategoriaTable($adapter);

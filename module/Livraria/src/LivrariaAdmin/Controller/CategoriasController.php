@@ -19,12 +19,13 @@ class CategoriasController extends AbstractActionController {
                 ->getRepository('Livraria\Entity\Categoria')
                 ->findAll();
 
-        $page = $this->params()->fromRoute('Page');
+        $page = $this->params()->fromRoute('page');
 
         $paginator = new Paginator(new ArrayAdapter($list));
         $paginator->setCurrentPageNumber($page);
         $paginator->setDefaultItemCountPerPage(1);
-        return new ViewModel(array('data' => $paginator,'page'=> $page));
+
+        return new ViewModel(array('data' => $paginator, 'page' =>$page));
     }
 
     /*
