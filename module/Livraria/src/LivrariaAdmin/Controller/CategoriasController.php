@@ -7,6 +7,7 @@ use Zend\Mvc\Controller\AbstractActionController,
 use Zend\Paginator\Paginator,
     Zend\Paginator\Adapter\ArrayAdapter;
 use LivrariaAdmin\Form\Categoria as FrmCategoria;
+
 class CategoriasController extends AbstractActionController {
     /*
      * @var EntityManagaer
@@ -25,20 +26,45 @@ class CategoriasController extends AbstractActionController {
         $paginator->setCurrentPageNumber($page);
         $paginator->setDefaultItemCountPerPage(1);
 
-        return new ViewModel(array('data' => $paginator, 'page' =>$page));
+        return new ViewModel(array('data' => $paginator, 'page' => $page));
     }
+
     public function newAction() {
         $form = new FrmCategoria();
         $request = $this->getrequest();
-        if ($request->isPost()){
+        if ($request->isPost()) {
             $form->setData($request->getPost());
-            if($form->isValid()){
-                //rotina de inserir
-                return $this->redirect()->toRoute('livraria-admin',array('controller'=>'categorias'));
+            if ($form->isValid()) {
+                $service = $this->getServiceLocator()->get('Livraria\Service\Categoria');
+                $service->insert($request->getPost()->toArray());
+                return $this->redirect()->toRoute('livraria-admin', array('controller' => 'categorias'));
             }
-                    
         }
-        return new ViewModel(array('form' =>$form));
+        return new ViewModel(array('form' => $form));
+    }
+
+    public function editAction() {
+        $form = new FrmCategoria();
+        $request = $this->getRequest();
+        
+        $repository = $this->getEm()->getRepository('Livraria\Entity\Categoria');
+        $entity = $repository->find($this->params()->fromRoute('id', 0));
+        
+        if ($this->params()->fromRoute('id', 0))
+            $form->setData($entity->toArray());
+        
+        if ($request->isPost()) {
+            $form->setData($request->getPost());
+            
+            
+            if ($form->isValid()) {
+                $service = $this->getServiceLocator()->get('Livraria\Service\Categoria');
+                $service->update($request->getPost()->toArray());
+                
+                return $this->redirect()->toRoute('livraria-admin', array('controller' => 'categorias'));
+            }
+        }
+        return new ViewModel(array('form' => $form));
     }
 
     /*
