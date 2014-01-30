@@ -2,5 +2,13 @@
 namespace Livraria\Entity;
 use Doctrine\ORM\EntityRepository;
 class CategoriaRepository extends EntityRepository{
-    //put your code here
+    public function fetchPairs() {
+        $entities   = $findAll();
+        $array = array();
+        foreach($entities as $entity){
+            $array[$entity->getId()] = $entity->getNome();
+        }
+        return $array;
+    }
+    
 }

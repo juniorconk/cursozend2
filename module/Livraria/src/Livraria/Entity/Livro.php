@@ -7,12 +7,12 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * @ORM\Entity
  * @ORM\Table(name="livros")
- * @ORM\Entity(repositoryclass="Livraria\Entity\LivroRepository")
+ * @ORM\Entity(repositoryClass="Livraria\Entity\LivroRepository")
  */
 class Livro {
 
     /**
-     * @ORM\ID
+     * @ORM\Id
      * @ORM\Column(type="integer")
      * @ORM\GeneratedValue
      * @var int 
@@ -26,8 +26,8 @@ class Livro {
     protected $nome;
 
     /**
-     * @ORM\ManytoOne(targetEntity="Livraria\Entity\Categoria",inversedBy="livro")
-     * @ORM\Joincolumn(name="categoria_id",referencedColumnName="id") 
+     * @ORM\ManyToOne(targetEntity="Livraria\Entity\Livro",inversedBy="livro")
+     * @ORM\JoinColumn(name="categoria_id",referencedColumnName="id") 
      */
     protected $categoria;
 
@@ -45,7 +45,7 @@ class Livro {
 
     /**
      * @ORM\Column(type="float")
-     * @var string
+     * @var float
      */
     protected $valor;
 

@@ -6,6 +6,7 @@ namespace Livraria;
     Zend\ModuleManager\ModuleManager;
 use Livraria\Model\CategoriaTable;
 use Livraria\Service\Categoria as CategoriaService;
+use Livraria\Service\Livro as LivroService;
 
 class Module {
 
@@ -37,6 +38,9 @@ class Module {
                 },
                 'Livraria\Service\Categoria' => function($service) {
                     return new CategoriaService($service->get('Doctrine\ORM\EntityManager'));
+                },
+                'Livraria\Service\Livro' => function($service) {
+                    return new LivroService($service->get('Doctrine\ORM\EntityManager'));
                 },
             ),
         );
