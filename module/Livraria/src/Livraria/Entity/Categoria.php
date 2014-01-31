@@ -31,7 +31,7 @@ class Categoria {
      */
     protected $nome;
     /**
-     *@ORM\OneToMayn(targetEntity="Livraria\Entity\Livro",mappedBy"categoria")
+     * @ORM\OneToMany(targetEntity="Livraria\Entity\Livro", mappedBy="Categoria")
      */
     protected $livros;
 

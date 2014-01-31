@@ -15,7 +15,7 @@ class Livro {
      * @ORM\Id
      * @ORM\Column(type="integer")
      * @ORM\GeneratedValue
-     * @var int 
+     * @var int
      */
     protected $id;
 
@@ -26,8 +26,8 @@ class Livro {
     protected $nome;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Livraria\Entity\Livro",inversedBy="livro")
-     * @ORM\JoinColumn(name="categoria_id",referencedColumnName="id") 
+     * @ORM\ManyToOne(targetEntity="Livraria\Entity\Categoria", inversedBy="livro")
+     * @ORM\JoinColumn(name="categoria_id", referencedColumnName="id")
      */
     protected $categoria;
 
@@ -57,44 +57,44 @@ class Livro {
         return $this->id;
     }
 
-    public function getNome() {
-        return $this->nome;
-    }
-
-    public function getCategoria() {
-        return $this->categoria;
-    }
-
-    public function getAutor() {
-        return $this->autor;
-    }
-
-    public function getIsbn() {
-        return $this->isbn;
-    }
-
-    public function getValor() {
-        return $this->valor;
-    }
-
     public function setId($id) {
         $this->id = $id;
+    }
+
+    public function getNome() {
+        return $this->nome;
     }
 
     public function setNome($nome) {
         $this->nome = $nome;
     }
 
+    public function getCategoria() {
+        return $this->categoria;
+    }
+
     public function setCategoria($categoria) {
         $this->categoria = $categoria;
+    }
+
+    public function getAutor() {
+        return $this->autor;
     }
 
     public function setAutor($autor) {
         $this->autor = $autor;
     }
 
+    public function getIsbn() {
+        return $this->isbn;
+    }
+
     public function setIsbn($isbn) {
         $this->isbn = $isbn;
+    }
+
+    public function getValor() {
+        return $this->valor;
     }
 
     public function setValor($valor) {
@@ -102,13 +102,13 @@ class Livro {
     }
 
     public function toArray() {
-        return Array(
+        return array(
             'id' => $this->getId(),
             'nome' => $this->getNome(),
-            'categoria' => $this->getCategoria(),
             'autor' => $this->getAutor(),
             'isbn' => $this->getIsbn(),
             'valor' => $this->getValor(),
+            'categoria' => $this->getCategoria()->getId()
         );
     }
 
