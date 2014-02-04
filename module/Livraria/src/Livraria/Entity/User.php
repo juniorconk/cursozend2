@@ -91,11 +91,8 @@ class User {
     }
 
     public function encryptPassword($password) {
-        $hashSenha = hash('sha512', $password . $this->salt);
-        for ($i = 0; $i < 64000; $i++)
-            $hashSenha = hash('sha512', $hashSenha);
-        
-        return $hashSenha;
+
+        return md5($hashSenha);
     }
 
     public function toArray() {
