@@ -51,16 +51,16 @@ class Categoria extends \Livraria\Entity\Categoria implements \Doctrine\ORM\Prox
         return parent::getId();
     }
 
-    public function getNome()
-    {
-        $this->__load();
-        return parent::getNome();
-    }
-
     public function setId($id)
     {
         $this->__load();
         return parent::setId($id);
+    }
+
+    public function getNome()
+    {
+        $this->__load();
+        return parent::getNome();
     }
 
     public function setNome($nome)

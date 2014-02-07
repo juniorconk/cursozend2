@@ -1,0 +1,15 @@
+<h3>Novo Aluno</h3>
+<?php
+$form = $this->form;
+$form->setAttribute('action', $this->url('escola-admin', array('controller' => 'alunos', 'action' => 'new')));
+$form->prepare();
+echo $this->form()->openTag($form);
+echo $this->formHidden($form->get('id'));
+echo $this->formRow($form->get('nome')) . "<br/>";
+echo $this->formRow($form->get('curso')) . "<br/>";
+echo $this->formRow($form->get('autor')) . "<br/>";
+echo $this->formRow($form->get('valor')) . "<br/>";
+echo $this->formRow($form->get('isbn')) . "<br/>";
+echo $this->formSubmit($form->get('submit'));
+echo $this->form()->closeTag();
+?>
