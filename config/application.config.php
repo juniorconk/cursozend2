@@ -4,7 +4,7 @@ return array(
     'modules' => array(
         'DoctrineModule',
         'DoctrineORMModule',
-        'Livraria'
+        'Escola'
     ),
     'module_listener_options' => array(
         'module_paths' => array(

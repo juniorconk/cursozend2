@@ -9,7 +9,7 @@ class Aluno extends Form {
     
     protected $cursos;
 
-    public function __construct($name = null, array $categorias = null) {
+    public function __construct($name = null, array $cursos = null) {
         parent::__construct('aluno');
         $this->cursos  = $cursos;
 
@@ -38,46 +38,10 @@ class Aluno extends Form {
         $categoria = new Select();
         $categoria->setLabel("Curso")
                 ->setName("curso")
-                ->setOptions(array('value_options' => $this->categorias)
+                ->setOptions(array('value_options' => $this->cusos)
         );
         $this->add($curso);
-
-        $this->add(array(
-            'name' => 'autor',
-            'options' => array(
-                'type' => 'text',
-                'label' => 'Autor'
-            ),
-            'attributes' => array(
-                'id' => 'autor',
-                'placeholder' => 'Entre com o autor'
-            ),
-        ));
-        
-        $this->add(array(
-            'name' => 'isbn',
-            'options' => array(
-                'type' => 'text',
-                'label' => 'ISBN'
-            ),
-            'attributes' => array(
-                'id' => 'isbn',
-                'placeholder' => 'Entre com o ISBN'
-            ),
-        ));
-        
-        $this->add(array(
-            'name' => 'valor',
-            'options' => array(
-                'type' => 'text',
-                'label' => 'Valor'
-            ),
-            'attributes' => array(
-                'id' => 'valor',
-                'placeholder' => 'Entre com o Valor'
-            ),
-        ));
-        
+    
         $this->add(array(
             'name' => 'submit',
             'type' => 'Zend\Form\Element\Submit',
