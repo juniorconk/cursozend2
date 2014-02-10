@@ -5,14 +5,11 @@ namespace Escola;
 use Zend\Mvc\ModuleRouteListener,
     Zend\Mvc\MvcEvent,
     Zend\ModuleManager\ModuleManager;
-use Zend\Authentication\AuthenticationService,
-    Zend\Authentication\Storage\Session as SessionStorage;
 use Escola\Model\CursoTable;
 use Escola\Service\Curso as CursoService;
 use Escola\Service\Aluno as AlunoService;
 use Escola\Service\User as UserService;
 use EscolaAdmin\Form\Aluno as AlunoFrm;
-use Escola\Auth\Adapter as AuthAdapter;
 
 class Module {
 
@@ -42,22 +39,6 @@ class Module {
                     }
                 }, 98);
     }
-
-    public function init(ModuleManager $moduleManager) {
-        $sharedEvents = $moduleManager->getEventManager()->getSharedManager();
-        $sharedEvents->attach("EscolaAdmin", 'dispatch', function($e) {
-                    $auth = new AuthenticationService;
-                    $auth->setStorage(new SessionStorage("EscolaAdmin"));
-
-                    $controller = $e->getTarget();
-                    $matchedRoute = $controller->getEvent()->getRouteMatch()->getMatchedRouteName();
-
-                    if (!$auth->hasIdentity() and ($matchedRoute == "escola-admin" or $matchedRoute == "escola-admin-interna")) {
-                        return $controller->redirect()->toRoute('escola-admin-auth');
-                    }
-                }, 99);
-    }
-
     public function getServiceConfig() {
 
         return array(
@@ -82,9 +63,6 @@ class Module {
                     $repository = $em->getRepository('Escola\Entity\Curso');
                     $cursos = $repository->fetchPairs();
                     return new AlunoFrm(null, $cursos);
-                },
-                'Escola\Auth\Adapter' => function($service) {
-                    return new AuthAdapter($service->get('Doctrine\ORM\EntityManager'));
                 },
             ),
         );

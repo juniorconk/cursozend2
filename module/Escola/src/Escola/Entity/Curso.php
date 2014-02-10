@@ -7,35 +7,31 @@ use Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * @ORM\Entity
- * @ORM\Table(name="cursos")
+ * @ORM\Table(name="curso")
  * @ORM\Entity(repositoryClass="Escola\Entity\CursoRepository")
  */
-class Curso {
+class Curso{
 
     public function __construct($options = null) {
-        Configurator::configure($this,$options);
+        Configurator::configure($this, $options);
         $this->Alunos = new ArrayCollection();
     }
-    
+
     /**
      * @ORM\Id
-     * @ORM\Column(type="integer")
+     * @ORM\Column(name="id_curso",type="integer")
      * @ORM\GeneratedValue
      * @var int
      */
     protected $id;
-    
+
     /**
      * @ORM\Column(type="text")
      * @var string
      */
     protected $nome;
-    
-    /**
-     * @ORM\OneToMany(targetEntity="Escola\Entity\Aluno", mappedBy="curso")
-     */
-    protected $livros;
-    
+    protected $alunos;
+
     public function getId() {
         return $this->id;
     }
@@ -55,12 +51,13 @@ class Curso {
     public function __toString() {
         return $this->nome;
     }
-    
+
     public function getAlunos() {
         return $this->alunos;
     }
-    
+
     public function toArray() {
-        return array('id'=>$this->getId(),'nome'=>$this->getNome());
+        return array('id' => $this->getId(), 'nome' => $this->getNome());
     }
+
 }

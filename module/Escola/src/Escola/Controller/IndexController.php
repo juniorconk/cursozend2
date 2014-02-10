@@ -14,8 +14,8 @@ class IndexController extends AbstractActionController {
         $cursos = $repo->findAll();
         
        /** Zend\Db
-        $categoriaService = $this->getServiceLocator()->get("Livraria\Model\CategoriaService");
-        $categorias = $categoriaService->fetchAll();
+        $cursoService = $this->getServiceLocator()->get("Livraria\Model\CursoService");
+        $cursos = $cursoService->fetchAll();
         */
         return new ViewModel(array('cursos' => $cursos));
     }

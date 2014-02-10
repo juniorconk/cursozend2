@@ -34,26 +34,6 @@ return array(
                     ),
                 ),
             ),
-            'escola-admin-auth' => array(
-                'type'=> 'Literal',
-                'options' => array(
-                    'route' => '/admin/auth',
-                    'defaults' => array(
-                        'action' => 'index',
-                        'controller'=>'escola-admin/auth'
-                        ),
-                ),
-            ),
-            'escola-admin-logout' => array(
-                'type'=> 'Literal',
-                'options' => array(
-                    'route' => '/admin/auth/logout',
-                    'defaults' => array(
-                        'action' => 'logout',
-                        'controller'=>'escola-admin/auth'
-                        ),
-                ),
-            ),
         ),
     ),
     'controllers' => array(
@@ -62,7 +42,6 @@ return array(
             'cursos' => 'EscolaAdmin\Controller\CursosController',
             'livros' => 'EscolaAdmin\Controller\AlunosController',
             'Users' => 'EscolaAdmin\Controller\UsersController',
-            'escola-admin/auth' => 'EscolaAdmin\Controller\AuthController'
             ),
     ),
     'view_manager' => array(

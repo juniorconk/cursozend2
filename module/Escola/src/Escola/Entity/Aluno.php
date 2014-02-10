@@ -7,9 +7,9 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * @ORM\Entity
  * @ORM\Table(name="alunos")
- * @ORM\Entity(repositoryClass="Livraria\Entity\LivroRepository")
+ * @ORM\Entity(repositoryClass="Livraria\Entity\AlunoRepository")
  */
-class Livro {
+class Aluno {
 
     /**
      * @ORM\Id
@@ -26,28 +26,10 @@ class Livro {
     protected $nome;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Livraria\Entity\Categoria", inversedBy="livro")
-     * @ORM\JoinColumn(name="categoria_id", referencedColumnName="id")
+     * @ORM\OneToMany(targetEntity="Livraria\Entity\Curso", inversedBy="Alunos")
+     * @ORM\JoinColumn(name="curso_id", referencedColumnName="id")
      */
     protected $curso;
-
-    /**
-     * @ORM\Column(type="text")
-     * @var string
-     */
-    protected $autor;
-
-    /**
-     * @ORM\Column(type="text")
-     * @var string
-     */
-    protected $isbn;
-
-    /**
-     * @ORM\Column(type="float")
-     * @var float
-     */
-    protected $valor;
 
     public function __construct($options = null) {
         Configurator::configure($this, $options);
@@ -77,37 +59,10 @@ class Livro {
         $this->curso = $curso;
     }
 
-    public function getAutor() {
-        return $this->autor;
-    }
-
-    public function setAutor($autor) {
-        $this->autor = $autor;
-    }
-
-    public function getIsbn() {
-        return $this->isbn;
-    }
-
-    public function setIsbn($isbn) {
-        $this->isbn = $isbn;
-    }
-
-    public function getValor() {
-        return $this->valor;
-    }
-
-    public function setValor($valor) {
-        $this->valor = $valor;
-    }
-
     public function toArray() {
         return array(
             'id' => $this->getId(),
             'nome' => $this->getNome(),
-            'autor' => $this->getAutor(),
-            'isbn' => $this->getIsbn(),
-            'valor' => $this->getValor(),
             'curso' => $this->getCurso()->getId()
         );
     }

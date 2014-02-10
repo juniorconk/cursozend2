@@ -5,7 +5,7 @@ use Zend\Db\ResultSet\ResultSet;
 use Zend\Db\TableGateway\AbstractTableGateway;
 
 class CursoTable extends AbstractTableGateway{
-    protected $table = "cursos";
+    protected $table = "curso";
     public function __construct(Adapter $adapter) {
         $this->adapter = $adapter;
         $this->resultSetPrototype = new ResultSet();

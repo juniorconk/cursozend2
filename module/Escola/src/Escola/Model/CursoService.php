@@ -6,7 +6,7 @@ class CursoService{
      *
      * @var Escola\Model\CursoTable
      */
-    protected $cursoTablre;
+    protected $cursoTable;
     public function __construct(CursoTable $table) {
         $this->cursoTable = $table;
         
