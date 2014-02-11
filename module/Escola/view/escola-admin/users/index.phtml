@@ -1,7 +1,7 @@
 <h1>Users</h1>
 <br/>
 <p>
-    <a href="<?php echo $this->url('livraria-admin-interna',array('controller'=>'users','action'=>'new'));?>">Novo</a> 
+    <a href="<?php echo $this->url('escola-admin-interna',array('controller'=>'users','action'=>'new'));?>">Novo</a> 
 </p>
 <table class="table">
     <tr>
@@ -16,10 +16,10 @@
             <td><?php echo $entity->getNome(); ?></td>
             <td><?php echo $entity->getEmail(); ?></td>
             <td>
-                <a href="<?php echo $this->url('livraria-admin-interna',
+                <a href="<?php echo $this->url('escola-admin-interna',
     array('controller' => 'users', 'action' => 'edit', 'id' => $entity->getId()));
     ?>">Editar</a>
-                <a href="<?php echo $this->url('livraria-admin-interna',
+                <a href="<?php echo $this->url('escola-admin-interna',
     array('controller' => 'users', 'action' => 'delete', 'id' => $entity->getId()));
     ?>">Deletar</a>
             </td>

@@ -1,15 +1,12 @@
 <h1>Alunos</h1>
 <br/>
 <p>
-    <a href="<?php echo $this->url('escola-admin-interna',array('controller'=>'Alnos','action'=>'new'));?>">Novo</a> 
+    <a href="<?php echo $this->url('escola-admin-interna',array('controller'=>'alunos','action'=>'new'));?>">Novo</a> 
 </p>
 <table class="table">
     <tr>
         <th>ID</th>
         <th>Nome</th>
-        <th>Categoria</th>
-        <th>Valor</th>
-        <th>Autor</th>
         <th>Acao</th>
     </tr>
     <?php foreach ($this->data as $entity): ?>
@@ -17,8 +14,6 @@
             <td><?php echo $entity->getId(); ?></td>
             <td><?php echo $entity->getNome(); ?></td>
             <td><?php echo $entity->getCurso(); ?></td>
-            <td><?php echo $entity->getValor(); ?></td>
-            <td><?php echo $entity->getAutor(); ?></td>
             <td>
                 <a href="<?php echo $this->url('escola-admin-interna',
     array('controller' => 'alunos', 'action' => 'edit', 'id' => $entity->getId()));

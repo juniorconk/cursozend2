@@ -6,8 +6,8 @@ use Doctrine\ORM\Mapping as ORM;
 
 /**
  * @ORM\Entity
- * @ORM\Table(name="alunos")
- * @ORM\Entity(repositoryClass="Livraria\Entity\AlunoRepository")
+ * @ORM\Table(name="aluno")
+ * @ORM\Entity(repositoryClass="Escola\Entity\AlunoRepository")
  */
 class Aluno {
 
@@ -26,7 +26,7 @@ class Aluno {
     protected $nome;
 
     /**
-     * @ORM\OneToMany(targetEntity="Livraria\Entity\Curso", inversedBy="Alunos")
+     * @ORM\ManyToOne(targetEntity="Escola\Entity\Curso", inversedBy="Alunos")
      * @ORM\JoinColumn(name="curso_id", referencedColumnName="id")
      */
     protected $curso;

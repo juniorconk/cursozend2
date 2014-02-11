@@ -1,7 +1,7 @@
 <h3>Novo user</h3>
 <?php
 $form = $this->form;
-$form->setAttribute('action', $this->url('livraria-admin', array('controller' => 'users', 'action' => 'new')));
+$form->setAttribute('action', $this->url('escola-admin', array('controller' => 'users', 'action' => 'new')));
 $form->prepare();
 echo $this->form()->openTag($form);
 echo $this->formHidden($form->get('id'));

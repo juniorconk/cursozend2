@@ -29,7 +29,7 @@ class Aluno extends AbstractService {
         $entity = $this->em->getReference($this->entity, $data['id']);
         $entity = Configurator::configure($entity,$data);
         
-        $categoria = $this->em->getReference("Escola\Entity\Curso", $data['curso']);
+        $curso = $this->em->getReference("Escola\Entity\Curso", $data['curso']);
         $entity->setCurso($curso);
         
         $this->em->persist($entity);

@@ -1,7 +1,7 @@
 <h3>Editando categoria</h3>
 <?php
 $form = $this->form;
-$form->setAttribute('action', $this->url('livraria-admin-interna', array('controller' => 'cursos', 'action' => 'edit')));
+$form->setAttribute('action', $this->url('escola-admin-interna', array('controller' => 'cursos', 'action' => 'edit')));
 $form->prepare();
 echo $this->form()->openTag($form);
 echo $this->formHidden($form->get('id'));

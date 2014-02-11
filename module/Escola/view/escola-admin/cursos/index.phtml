@@ -1,4 +1,4 @@
-<h1>Categorias</h1>
+<h1>Cursos</h1>
 <br/>
 <p>
     <a href="<?php echo $this->url('escola-admin-interna',array('controller'=>'cursos','action'=>'new'));?>">Novo</a> 
@@ -13,6 +13,7 @@
         <tr>
             <td><?php echo $entity->getId(); ?></td>
             <td><?php echo $entity->getNome(); ?></td>
+            <td><?php echo $entity->getAlunos(); ?></td>
             <td>
                 <a href="<?php echo $this->url('escola-admin-interna',
     array('controller' => 'cursos', 'action' => 'edit', 'id' => $entity->getId()));
