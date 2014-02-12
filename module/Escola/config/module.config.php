@@ -40,8 +40,8 @@ return array(
         'invokables' => array(
             'Escola\Controller\Index' => 'Escola\Controller\IndexController',
             'cursos' => 'EscolaAdmin\Controller\CursosController',
-            'livros' => 'EscolaAdmin\Controller\AlunosController',
-            'Users' => 'EscolaAdmin\Controller\UsersController',
+            'alunos' => 'EscolaAdmin\Controller\AlunosController',
+            'users'  => 'EscolaAdmin\Controller\UsersController',
             ),
     ),
     'view_manager' => array(

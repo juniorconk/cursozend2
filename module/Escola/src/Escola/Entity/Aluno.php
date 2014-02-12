@@ -1,6 +1,6 @@
 <?php
 
-namespace Aluno\Entity;
+namespace Escola\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 
@@ -13,7 +13,7 @@ class Aluno {
 
     /**
      * @ORM\Id
-     * @ORM\Column(type="integer")
+     * @ORM\Column(name="id_aluno",type="integer")
      * @ORM\GeneratedValue
      * @var int
      */
@@ -27,12 +27,13 @@ class Aluno {
 
     /**
      * @ORM\ManyToOne(targetEntity="Escola\Entity\Curso", inversedBy="Alunos")
-     * @ORM\JoinColumn(name="curso_id", referencedColumnName="id")
+     * @ORM\JoinColumn(name="curso", referencedColumnName="id_curso")
      */
     protected $curso;
 
     public function __construct($options = null) {
         Configurator::configure($this, $options);
+        $this->Cursos = new ArrayCollection();
     }
 
     public function getId() {

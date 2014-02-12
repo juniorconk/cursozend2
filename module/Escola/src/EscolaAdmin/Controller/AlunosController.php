@@ -3,6 +3,8 @@
 namespace EscolaAdmin\Controller;
 
 use Zend\View\Model\ViewModel;
+use Zend\Paginator\Paginator,
+    Zend\Paginator\Adapter\ArrayAdapter;
 
 class AlunosController extends CrudController {
 
@@ -13,7 +15,19 @@ class AlunosController extends CrudController {
         $this->controller = "alunos";
         $this->route = "escola-admin";
     }
-    
+    public function indexAction() {
+        $list = $this->getEm()
+                ->getRepository($this->entity)
+                ->findAll();
+
+        $page = $this->params()->fromRoute('page');
+
+        $paginator = new Paginator(new ArrayAdapter($list));
+        $paginator->setCurrentPageNumber($page);
+        $paginator->setDefaultItemCountPerPage(1);
+
+        return new ViewModel(array('data' => $paginator, 'page' => $page));
+    }
     public function newAction() {
         $form = $this->getServiceLocator()->get($this->form);
 
