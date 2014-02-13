@@ -9,15 +9,15 @@ class IndexController extends AbstractActionController {
 
     public function indexAction() {
         $em = $this->getServiceLocator()->get('Doctrine\ORM\EntityManager');
-        $repo = $em->getRepository('Escola\Entity\Curso');
+        $repo = $em->getRepository('Escola\Entity\Aluno');
         
-        $cursos = $repo->findAll();
+        $aluno = $repo->findAll();
         
        /** Zend\Db
-        $cursoService = $this->getServiceLocator()->get("Escola\Model\CursoService");
-        $cursos = $cursoService->fetchAll();
+        $alunoService = $this->getServiceLocator()->get("Escola\Model\AlunoService");
+        $alunos = $alunoService->fetchAll();
         */
-        return new ViewModel(array('cursos' => $cursos));
+        return new ViewModel(array('alunos' => $alunos));
     }
 
 }

@@ -16,21 +16,41 @@ return array(
                 ),
             ),
             'escola-admin-interna' => array(
-                'type'=> 'Segment',
+                'type' => 'Segment',
                 'options' => array(
                     'route' => '/admin/[:controller[/:action]][/:id]',
-                    'constraints' =>array(
-                        'id'=> '[0-9]+'
+                    'constraints' => array(
+                        'id' => '[0-9]+'
                     )
                 ),
             ),
             'escola-admin' => array(
-                'type'=> 'Segment',
+                'type' => 'Segment',
                 'options' => array(
                     'route' => '/admin/[:controller[/:action][/page/:page]]',
                     'defaults' => array(
                         'action' => 'index',
                         'page' => 1
+                    ),
+                ),
+            ),
+            'escola-admin-auth' => array(
+                'type' => 'Literal',
+                'options' => array(
+                    'route' => '/admin/auth',
+                    'defaults' => array(
+                        'action' => 'index',
+                        'controller' => 'escola-admin/auth'
+                    ),
+                ),
+            ),
+            'escola-admin-logout' => array(
+                'type' => 'Literal',
+                'options' => array(
+                    'route' => '/admin/auth/logout',
+                    'defaults' => array(
+                        'action' => 'logout',
+                        'controller' => 'escola-admin/auth'
                     ),
                 ),
             ),
@@ -41,8 +61,9 @@ return array(
             'Escola\Controller\Index' => 'Escola\Controller\IndexController',
             'cursos' => 'EscolaAdmin\Controller\CursosController',
             'alunos' => 'EscolaAdmin\Controller\AlunosController',
-            'users'  => 'EscolaAdmin\Controller\UsersController',
-            ),
+            'users' => 'EscolaAdmin\Controller\UsersController',
+            'escola-admin/auth' => 'EscolaAdmin\Controller\AuthController'
+        ),
     ),
     'view_manager' => array(
         'display_not_found_reason' => true,
@@ -63,15 +84,15 @@ return array(
     'doctrine' => array(
         'driver' => array(
             __NAMESPACE__ . '_driver' => array(
-                'class'=>'Doctrine\ORM\Mapping\Driver\AnnotationDriver',
-                'cache'=>'array',
-                    'paths' => array(__DIR__ . '/../src/'.__NAMESPACE__ .'/Entity')
-                ),
-                'orm_default' => array(
-                    'drivers' => array(
-                        __NAMESPACE__ .  '\Entity' => __NAMESPACE__ . '_driver'
-                    ),
+                'class' => 'Doctrine\ORM\Mapping\Driver\AnnotationDriver',
+                'cache' => 'array',
+                'paths' => array(__DIR__ . '/../src/' . __NAMESPACE__ . '/Entity')
+            ),
+            'orm_default' => array(
+                'drivers' => array(
+                    __NAMESPACE__ . '\Entity' => __NAMESPACE__ . '_driver'
                 ),
             ),
         ),
+    ),
 );

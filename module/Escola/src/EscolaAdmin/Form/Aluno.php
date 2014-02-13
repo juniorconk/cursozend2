@@ -35,12 +35,12 @@ class Aluno extends Form {
             )
         ));
         
-        $categoria = new Select();
-        $categoria->setLabel("Curso")
+        $cursos = new Select();
+        $cursos->setLabel("Curso")
                 ->setName("curso")
                 ->setOptions(array('value_options' => $this->cursos)
         );
-        $this->add($curso);
+        $this->add($cursos);
     
         $this->add(array(
             'name' => 'submit',
