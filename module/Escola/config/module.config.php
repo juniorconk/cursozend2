@@ -8,7 +8,7 @@ return array(
             'escola-home' => array(
                 'type' => 'Zend\Mvc\Router\Http\Literal',
                 'options' => array(
-                    'route' => '/escola',
+                    'route' => '/',
                     'defaults' => array(
                         'controller' => 'Escola\Controller\Index',
                         'action' => 'index',
