@@ -27,7 +27,7 @@ abstract class CrudController extends AbstractActionController {
 
         $paginator = new Paginator(new ArrayAdapter($list));
         $paginator->setCurrentPageNumber($page);
-        $paginator->setDefaultItemCountPerPage(1);
+        $paginator->setDefaultItemCountPerPage(10);
 
         return new ViewModel(array('data' => $paginator, 'page' => $page));
     }

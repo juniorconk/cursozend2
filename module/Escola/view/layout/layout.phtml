@@ -38,11 +38,6 @@
                 </div>
                 <div class="collapse navbar-collapse">
                     <ul class="nav navbar-nav">
-                        <?php if ($this->UserIdentity('EscolaAdmin')): ?>
-                        <li class="active"><a href="<?php echo $this->url('escola-admin',array('controller'=>'cursos')) ?>">Cursos</a></li>
-                        <li class="active"><a href="<?php echo $this->url('escola-admin',array('controller'=>'alunos')) ?>">Alunos</a></li>
-                        <li class="active"><a href="<?php echo $this->url('escola-admin',array('controller'=>'users')) ?>">Users</a></li>
-                    <?php endif; ?>
                         <li class="active"><a href="<?php echo $this->url('escola-admin-auth') ?>">Login</a></li>
                     </ul>
                 </div><!--/.nav-collapse -->
@@ -52,7 +47,7 @@
             <?php echo $this->content; ?>
             <hr>
             <footer>
-                <p>&copy; 2005 - <?php echo date('Y') ?> by Antonio Furtado <?php echo 'All rights reserved.' ?></p>
+                <p>&copy;<?php echo date('Y') ?> by Antonio Furtado <?php echo 'Todos os direitos reservados.' ?></p>
             </footer>
         </div> <!-- /container -->
         <?php echo $this->inlineScript() ?>

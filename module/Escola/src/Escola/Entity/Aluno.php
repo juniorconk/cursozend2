@@ -1,7 +1,7 @@
 <?php
 
 namespace Escola\Entity;
-
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -15,6 +15,7 @@ class Aluno {
      * @ORM\Id
      * @ORM\Column(name="id_aluno",type="integer")
      * @ORM\GeneratedValue
+     * @ORM\SequenceGenerator(sequenceName="aluno_id_seq")
      * @var int
      */
     protected $id;
@@ -33,7 +34,7 @@ class Aluno {
 
     public function __construct($options = null) {
         Configurator::configure($this, $options);
-        $this->Cursos = new ArrayCollection();
+        $this->curso = new ArrayCollection();
     }
 
     public function getId() {

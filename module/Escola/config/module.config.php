@@ -65,6 +65,10 @@ return array(
             'escola-admin/auth' => 'EscolaAdmin\Controller\AuthController'
         ),
     ),
+    'module_layouts' => array(
+        'Escola' => 'layout/layout',
+        'EscolaAdmin' => 'layout/layout-admin'
+    ),
     'view_manager' => array(
         'display_not_found_reason' => true,
         'display_exceptions' => true,

@@ -14,7 +14,6 @@ class Aluno extends Form {
         $this->cursos  = $cursos;
 
         $this->setAttribute('method', 'post');
-//        $this->setInputFilter(new LivroFilter);
 
         $this->add(array(
             'name' => 'id',
