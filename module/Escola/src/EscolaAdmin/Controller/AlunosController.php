@@ -24,7 +24,7 @@ class AlunosController extends CrudController {
 
         $paginator = new Paginator(new ArrayAdapter($list));
         $paginator->setCurrentPageNumber($page);
-        $paginator->setDefaultItemCountPerPage(10);
+        $paginator->setDefaultItemCountPerPage(1);
 
         return new ViewModel(array('data' => $paginator, 'page' => $page));
     }

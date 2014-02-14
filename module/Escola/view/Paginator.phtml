@@ -15,7 +15,7 @@ $formatUrl = function ($page) use ($urlPattern) {
 
 
             <!-- First page link -->
-    <?php if (isset($this->first)): ?>
+    <?php if (isset($this->previous)): ?>
                 <a href="<?php echo $formatUrl($this->first) ?>">
                     Primeira
                 </a> |
@@ -45,7 +45,7 @@ $formatUrl = function ($page) use ($urlPattern) {
 
 
             <!-- Last page link -->
-    <?php if (isset($this->last)): ?>
+    <?php if (isset($this->next)): ?>
                 <a href="<?php echo $formatUrl($this->last); ?>">
                     Último
                 </a>
